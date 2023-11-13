@@ -56,6 +56,7 @@ int main() {
     std::cout << "Enter the project name: "; //Github project name
     
     std::cin >> project;
+    std::cout << "Using LU-" << className+"/"+project<<std::endl;
 
     while (true) { // Forever until Ctrl-C or exit
         std::string input;
