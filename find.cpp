@@ -50,7 +50,11 @@ int main() {
 
     // Ask for the project name (assumed to be the same for all users)
     std::string project;
+    std::string className;
+    std::cout << "Enter the class name: "; //Github class name (LU-ABC000)
+    std::cin >> className;
     std::cout << "Enter the project name: "; //Github project name
+    
     std::cin >> project;
 
     while (true) { // Forever until Ctrl-C or exit
@@ -70,9 +74,9 @@ int main() {
 
         if (username != "Email not found") {
             
-            std::string githubLink = "https://github.com/LU-CSE109/" + project + "-" + username; // Return GitHub link, Easy!
+            std::string githubLink = "https://github.com/LU-"+className+"/" + project + "-" + username; // Return GitHub link, Easy!
             
-            std::string gitClone = "git clone git@github.com:LU-CSE109/"+project + "-"+ username+".git";
+            std::string gitClone = "git clone git@github.com:LU-"+className+"/"+project + "-"+ username+".git";
             std::cout << "GitHub link: " << githubLink << std::endl;
             std::cout << "Git clone (SSH): " << gitClone << std::endl << std::endl;
 
