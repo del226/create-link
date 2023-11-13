@@ -4,26 +4,26 @@
 #include <sstream>
 #include <string>
 #include <vector>
-
+using namespace std;
 struct UserData {
-    std::string lastname;
-    std::string firstname;
-    std::string email;
-    std::string LIN; 
-    std::string username;
+    string lastname;
+    string firstname;
+    string email;
+    string LIN; 
+    string username;
 };
 
 // Function to search for a username based on a full email
-std::string getUsernameFromFullEmail(const std::string& fullEmail, const std::string& csvFilePath) {
-    std::ifstream file(csvFilePath);
-    std::string line;
+string getUsername(const string& fullEmail, const string& csvFilePath) {
+    ifstream file(csvFilePath);
+    string line;
 
-    while (std::getline(file, line)) { // ChatGPT for this part
-        std::istringstream iss(line);
-        std::vector<std::string> tokens;
-        std::string token;
+    while (getline(file, line)) { // ChatGPT for this part
+        istringstream iss(line);
+        vector<string> tokens;
+        string token;
 
-        while (std::getline(iss,token,',')) {
+        while (getline(iss,token,',')) {
             tokens.push_back(token);
         }
 
@@ -45,44 +45,44 @@ std::string getUsernameFromFullEmail(const std::string& fullEmail, const std::st
 }
 
 int main() {
-    std::string csvFilePath = "users.csv"; // File of all users
-    std::string domain = "lehigh.edu"; // Domain name
+    string csvFilePath = "users.csv"; // File of all users
+    string domain = "lehigh.edu"; // Domain name
 
     // Ask for the project name (assumed to be the same for all users)
-    std::string project;
-    std::string className;
-    std::cout << "Enter the class name: "; //Github class name (LU-ABC000)
-    std::cin >> className;
-    std::cout << "Enter the project name: "; //Github project name
+    string project;
+    string className;
+    cout << "Enter the class name: "; //Github class name (LU-ABC000)
+    cin >> className;
+    cout << "Enter the project name: "; //Github project name
     
-    std::cin >> project;
-    std::cout << "Using LU-" << className+"/"+project<<std::endl;
+    cin >> project;
+    cout << "Using LU-" << className+"/"+project<<endl;
 
     while (true) { // Forever until Ctrl-C or exit
-        std::string input;
-        std::cout << "Enter username ('abc123'): ";
-        std::cin >> input;
+        string input;
+        cout << "Enter username ('abc123'): ";
+        cin >> input;
 
         if (input == "exit") {
             break; // Exit the loop if the user enters 'exit'
         }
 
         // We can just do abc123 or abc123@lehigh.edu
-        std::string user = input.substr(0, 6);
+        string user = input.substr(0, 6);
 
-        std::string fullEmail = user + "@" + domain;
-        std::string username = getUsernameFromFullEmail(fullEmail, csvFilePath);
+        string fullEmail = user + "@" + domain;
+        string username = getUsername(fullEmail, csvFilePath);
 
         if (username != "Email not found") {
             
-            std::string githubLink = "https://github.com/LU-"+className+"/" + project + "-" + username; // Return GitHub link, Easy!
+            string githubLink = "https://github.com/LU-"+className+"/" + project + "-" + username; // Return GitHub link, Easy!
             
-            std::string gitClone = "git clone git@github.com:LU-"+className+"/"+project + "-"+ username+".git";
-            std::cout << "GitHub link: " << githubLink << std::endl;
-            std::cout << "Git clone (SSH): " << gitClone << std::endl << std::endl;
+            string gitClone = "git clone git@github.com:LU-"+className+"/"+project + "-"+ username+".git";
+            cout << "GitHub link: " << githubLink << endl;
+            cout << "Git clone (SSH): " << gitClone << endl << endl;
 
         } else {
-            std::cout << "Email not found in the CSV file." << std::endl;
+            cout << "Email not found in the CSV file." << endl;
         }
     }
 
