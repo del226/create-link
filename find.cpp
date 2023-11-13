@@ -13,12 +13,12 @@ struct UserData {
     std::string username;
 };
 
-// Function to search for a username based on a full email (ChatGPT)
+// Function to search for a username based on a full email
 std::string getUsernameFromFullEmail(const std::string& fullEmail, const std::string& csvFilePath) {
     std::ifstream file(csvFilePath);
     std::string line;
 
-    while (std::getline(file, line)) {
+    while (std::getline(file, line)) { // ChatGPT for this part
         std::istringstream iss(line);
         std::vector<std::string> tokens;
         std::string token;
