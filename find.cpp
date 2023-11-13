@@ -74,7 +74,7 @@ int main() {
             
             std::string gitClone = "git clone git@github.com:LU-CSE109/"+project + "-"+ username+".git";
             std::cout << "GitHub link: " << githubLink << std::endl;
-            std::cout << "Git clone (SSH): " << gitClone << std::endl;
+            std::cout << "Git clone (SSH): " << gitClone << std::endl << std::endl;
 
         } else {
             std::cout << "Email not found in the CSV file." << std::endl;
