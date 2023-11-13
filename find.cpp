@@ -69,8 +69,13 @@ int main() {
         std::string username = getUsernameFromFullEmail(fullEmail, csvFilePath);
 
         if (username != "Email not found") {
+            
             std::string githubLink = "https://github.com/LU-CSE109/" + project + "-" + username; // Return GitHub link, Easy!
+            
+            std::string gitClone = "git clone git@github.com:LU-CSE109/"+project + "-"+ username+".git";
             std::cout << "GitHub link: " << githubLink << std::endl;
+            std::cout << "Git clone (SSH): " << gitClone << std::endl;
+
         } else {
             std::cout << "Email not found in the CSV file." << std::endl;
         }
