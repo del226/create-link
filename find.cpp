@@ -9,6 +9,7 @@ struct UserData {
     std::string lastname;
     std::string firstname;
     std::string email;
+    std::string LIN; 
     std::string username;
 };
 
@@ -22,16 +23,17 @@ std::string getUsernameFromFullEmail(const std::string& fullEmail, const std::st
         std::vector<std::string> tokens;
         std::string token;
 
-        while (iss >> token) {
+        while (std::getline(iss,token,',')) {
             tokens.push_back(token);
         }
 
-        if (tokens.size() == 4) {
+        if (tokens.size() == 5) {
             UserData userData;
             userData.lastname = tokens[0];
             userData.firstname = tokens[1];
-            userData.email = tokens[2];
-            userData.username = tokens[3];
+            userData.LIN = tokens[2];
+            userData.email = tokens[3];
+            userData.username = tokens[4];
 
             if (userData.email == fullEmail) {
                 return userData.username;
