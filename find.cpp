@@ -45,10 +45,14 @@ string getUsername(const string &fullEmail, const string &csvFilePath) {
   return "Email not found"; // Email is not found
 }
 
-int main() {
+int main(int argc, char **argv) {
   string csvFilePath = "users.csv"; // File of all users
   string domain = "lehigh.edu";     // Domain name
-
+  int clone = 0;
+  if (argc > 1) { // Only when there are multiple args do it show git clone
+    clone = 1;
+    cout << "Will print git clone links" << endl;
+  }
   // Ask for the project name (assumed to be the same for all users)
   string project;
   string className;
@@ -78,11 +82,13 @@ int main() {
 
       string githubLink = "https://github.com/LU-" + className + "/" + project +
                           "-" + username; // Return GitHub link, Easy!
-      string gitClone = "git clone git@github.com:LU-" + className + "/" +
-                        project + "-" + username + ".git";
       cout << "GitHub link: " << githubLink << endl;
-      cout << "Git clone (SSH): " << gitClone << endl << endl;
+      if (clone) { // Print git clone link
+        string gitClone = "git clone git@github.com:LU-" + className + "/" +
+                          project + "-" + username + ".git";
 
+        cout << "Git clone (SSH): " << gitClone << endl << endl;
+      }
     } else {
       cout << "Email not found in the CSV file." << endl;
       string githubLinkFailed =
