@@ -78,7 +78,6 @@ int main() {
 
       string githubLink = "https://github.com/LU-" + className + "/" + project +
                           "-" + username; // Return GitHub link, Easy!
-
       string gitClone = "git clone git@github.com:LU-" + className + "/" +
                         project + "-" + username + ".git";
       cout << "GitHub link: " << githubLink << endl;
@@ -86,6 +85,11 @@ int main() {
 
     } else {
       cout << "Email not found in the CSV file." << endl;
+      string githubLinkFailed =
+          "https://github.com/LU-" + className + "/" + project + "-" +
+          input; // Return GitHub link for nonexistant user
+
+      cout << "GitHub link (may not work): " << githubLinkFailed << endl;
     }
   }
 
