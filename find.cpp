@@ -89,7 +89,7 @@ int main() {
           "https://github.com/LU-" + className + "/" + project + "-" +
           input; // Return GitHub link for nonexistant user
 
-      cout << "GitHub link (may not work): " << githubLinkFailed << endl;
+      cout << "GitHub link (user input): " << githubLinkFailed << endl;
     }
   }
 
